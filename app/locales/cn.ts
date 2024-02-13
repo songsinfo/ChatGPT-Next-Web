@@ -73,7 +73,7 @@ const cn = {
       }
       return inputHints + "，/ 触发补全，: 触发命令";
     },
-    Send: "发送",
+    Send: "语音输入",
     Config: {
       Reset: "清除记忆",
       SaveAs: "存为面具",
@@ -315,8 +315,7 @@ const cn = {
       Google: {
         ApiKey: {
           Title: "API 密钥",
-          SubTitle:
-            "从 Google AI 获取您的 API 密钥",
+          SubTitle: "从 Google AI 获取您的 API 密钥",
           Placeholder: "输入您的 Google AI Studio API 密钥",
         },
 

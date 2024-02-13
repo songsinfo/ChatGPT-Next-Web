@@ -1,12 +1,5 @@
 import { useDebouncedCallback } from "use-debounce";
-import React, {
-  useState,
-  useRef,
-  useEffect,
-  useMemo,
-  useCallback,
-  Fragment,
-} from "react";
+import React, { useState, useRef, useEffect, useMemo, Fragment } from "react";
 
 import SendWhiteIcon from "../icons/send-white.svg";
 import BrainIcon from "../icons/brain.svg";
@@ -60,6 +53,7 @@ import dynamic from "next/dynamic";
 import { ChatControllerPool } from "../client/controller";
 import { Prompt, usePromptStore } from "../store/prompt";
 import Locale from "../locales";
+import recognizeSpeech from "./stt";
 
 import { IconButton } from "./button";
 import styles from "./chat.module.scss";
@@ -694,7 +688,11 @@ function _Chat() {
       }
     }
   };
-
+  // 定义一个dosubmitVoice的函数
+  const doSubmitVoice = async () => {
+    const result = await recognizeSpeech();
+    doSubmit(result);
+  };
   const doSubmit = (userInput: string) => {
     if (userInput.trim() === "") return;
     const matchCommand = chatCommands.match(userInput);
@@ -1302,7 +1300,7 @@ function _Chat() {
             text={Locale.Chat.Send}
             className={styles["chat-input-send"]}
             type="primary"
-            onClick={() => doSubmit(userInput)}
+            onClick={() => doSubmitVoice()}
           />
         </div>
       </div>

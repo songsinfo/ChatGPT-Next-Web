@@ -30,6 +30,7 @@ declare global {
       // google only
       GOOGLE_API_KEY?: string;
       GOOGLE_URL?: string;
+      NEXT_PUBLIC_AZURE_TTS_KEY?: string;
     }
   }
 }
